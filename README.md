@@ -2,8 +2,6 @@
 
 A client-side web app that analyses how well your CV matches a job posting and generates a tailored cover letter — powered by the **Claude API** (Anthropic).
 
-![AI Job Assistant Screenshot](screenshot.png)
-
 ## Features
 
 - **Match score** — honest 0–100% assessment of skill overlap
@@ -15,7 +13,7 @@ A client-side web app that analyses how well your CV matches a job posting and g
 
 ## Live Demo
 
-👉 [szmsk.github.io/ai-job-assistant](https://your-github-username.github.io/ai-job-assistant)
+👉 [szmsk.github.io/ai-job-assistant](https://szmsk.github.io/ai-job-assistant)
 
 ## Tech Stack
 
@@ -31,7 +29,7 @@ A client-side web app that analyses how well your CV matches a job posting and g
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ai-job-assistant.git
+git clone https://github.com/szmsk/ai-job-assistant.git
 cd ai-job-assistant
 ```
 
@@ -58,8 +56,8 @@ Go to [console.anthropic.com](https://console.anthropic.com), create an account,
 
 1. Push this repo to GitHub
 2. Go to **Settings → Pages**
-3. Source: **Deploy from a branch** → `main` → `/ (root)`
-4. Your app will be live at `https://YOUR_USERNAME.github.io/ai-job-assistant`
+3. Source: **Deploy from a branch** → `main` → `/ (root)` → Save
+4. Your app will be live at `https://szmsk.github.io/ai-job-assistant`
 
 ## How It Works
 
@@ -103,9 +101,11 @@ Built by **Szymon Kloskowski** as a portfolio project demonstrating:
 - Client-side web development (HTML, CSS, Vanilla JS)
 - Practical AI application design
 
-**Contact:** kloskowskiszymon@wp.pl  
+**Contact:** kloskowskiszymon@wp.pl
+**GitHub:** [github.com/szmsk](https://github.com/szmsk)
 **LinkedIn:** [linkedin.com/in/szymon-kloskowski](https://linkedin.com/in/szymon-kloskowski)
 
 ## License
 
 MIT — free to use, fork, and modify.
+
