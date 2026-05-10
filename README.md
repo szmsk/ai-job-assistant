@@ -15,7 +15,7 @@ A client-side web app that analyses how well your CV matches a job posting and g
 
 ## Live Demo
 
-👉 [your-github-username.github.io/ai-job-assistant](https://your-github-username.github.io/ai-job-assistant)
+👉 [szmsk.github.io/ai-job-assistant](https://your-github-username.github.io/ai-job-assistant)
 
 ## Tech Stack
 
