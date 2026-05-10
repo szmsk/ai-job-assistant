@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Job Application Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">AI Job Assistant</span>
+      </div>
+      <nav class="nav-links">
+        <a href="https://github.com/YOUR_USERNAME/ai-job-assistant" target="_blank" class="nav-link">GitHub</a>
+        <a href="#how-it-works" class="nav-link">How it works</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">AI Job Application<br><span class="accent">Assistant</span></h1>
+        <p class="hero-sub">Paste a job posting and your CV — get a match score, tailored cover letter, and actionable tips in seconds.</p>
+        <div class="badges">
+          <span class="badge">Powered by Claude API</span>
+          <span class="badge">100% client-side</span>
+          <span class="badge">No data stored</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="container">
+
+        <div class="api-bar">
+          <label for="apiKey">
+            <span class="key-icon">🔑</span>
+            Anthropic API Key
+          </label>
+          <div class="api-input-wrap">
+            <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off" spellcheck="false">
+            <button class="toggle-key" onclick="toggleKey()" title="Show/hide key">👁</button>
+          </div>
+          <p class="api-note">Your key is used only in your browser and never sent anywhere except directly to Anthropic. <a href="https://console.anthropic.com" target="_blank">Get a key →</a></p>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" placeholder="e.g. Szymon Kloskowski">
+          </div>
+          <div class="field">
+            <label for="company">Company name</label>
+            <input type="text" id="company" placeholder="e.g. Verisian">
+          </div>
+          <div class="field field-full">
+            <label for="job">Job posting <span class="hint">— paste the full description</span></label>
+            <textarea id="job" rows="9" placeholder="Paste the full job posting here — requirements, responsibilities, tech stack, company description..."></textarea>
+          </div>
+          <div class="field field-full">
+            <label for="cv">Your CV <span class="hint">— paste the text content</span></label>
+            <textarea id="cv" rows="9" placeholder="Paste your CV text here — experience, education, skills, certifications, projects..."></textarea>
+          </div>
+        </div>
+
+        <button class="run-btn" id="runBtn" onclick="runAnalysis()">
+          <span id="btnContent">
+            <span class="btn-icon">✦</span>
+            Analyse & Generate Cover Letter
+          </span>
+        </button>
+
+      </div>
+    </section>
+
+    <section class="results-section" id="resultsSection" style="display:none">
+      <div class="container">
+
+        <div class="result-card" id="scoreCard">
+          <div class="card-header">
+            <span class="card-icon">📊</span>
+            <h2>Match Analysis</h2>
+          </div>
+
+          <div class="score-block">
+            <div class="score-circle" id="scoreCircle">
+              <span class="score-num" id="scoreNum">—</span>
+              <span class="score-pct">%</span>
+            </div>
+            <div class="score-detail">
+              <div class="score-label" id="scoreLabel">Analysing...</div>
+              <div class="score-bar-wrap">
+                <div class="score-bar" id="scoreBar"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tags-block">
+            <div class="tags-group">
+              <div class="tags-label matched-label">✓ Requirements you meet</div>
+              <div class="tags" id="matchTags"></div>
+            </div>
+            <div class="tags-group">
+              <div class="tags-label missing-label">✗ Gaps to address</div>
+              <div class="tags" id="missTags"></div>
+            </div>
+          </div>
+
+          <div class="advice-box" id="adviceBox" style="display:none">
+            <span class="advice-icon">💡</span>
+            <p id="adviceText"></p>
+          </div>
+        </div>
+
+        <div class="result-card" id="coverCard">
+          <div class="card-header">
+            <span class="card-icon">✉️</span>
+            <h2>Cover Letter</h2>
+            <button class="copy-btn" id="copyBtn" onclick="copyText()">
+              <span>Copy</span>
+            </button>
+          </div>
+          <div class="cover-text" id="coverText"></div>
+        </div>
+
+        <div class="result-card" id="tipsCard">
+          <div class="card-header">
+            <span class="card-icon">🎯</span>
+            <h2>Before you send — tips</h2>
+          </div>
+          <div class="tips-text" id="tipsText"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="container">
+        <h2 class="section-title">How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h3>Paste the job posting</h3>
+            <p>Copy the full job description including requirements, tech stack, and company info.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h3>Add your CV</h3>
+            <p>Paste your CV text. The more complete, the better the match analysis.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h3>Get your score</h3>
+            <p>Claude AI analyses skill overlap and generates a precise match percentage.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <h3>Send the cover letter</h3>
+            <p>Copy the tailored cover letter and apply. Edit to personalise further.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Built with <a href="https://www.anthropic.com" target="_blank">Claude API</a> by <strong>Szymon Kloskowski</strong> · <a href="https://github.com/YOUR_USERNAME/ai-job-assistant" target="_blank">View on GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
